@@ -4,6 +4,9 @@
 
 while read -r line ; do
 case $line in
+        C*)
+            conky_infos="${line#?}"
+            ;;
         S*)
             # clock output
             sys_infos="\\br\\f7${line#?}"
@@ -47,13 +50,13 @@ item=$1
                         ;;
                     L*)
                         # layout
-                        layout=$(printf "%s" "${name}" | sed 's/\(.\).*/\U\1/')
-                        wm_infos="$wm_infos \\br\\f2$layout"
+                        #layout=$(printf "%s" "${name}" | sed 's/\(.\).*/\U\1/')
+                        #wm_infos="$wm_infos \\br\\f2$layout"
                         ;;
                 esac
 shift
 done
             ;;
     esac
-printf "%s\n" "\\l $wm_infos \\c $title \\r $sys_infos "
+printf "%s\n" "\\l $wm_infos \\r $title $conky_infos"
 done

@@ -16,7 +16,8 @@ bspc config top_padding 14
 
 bspc control --subscribe > "$PANEL_FIFO" &
 xtitle -sf 'T%s' > "$PANEL_FIFO" &
-clock -sf 'S%a %H:%M' > "$PANEL_FIFO" &
+conky -c ~/.config/bspwm/panel/conkyrc > "$PANEL_FIFO" &
+clock -sf 'S%D %A %H:%M' > "$PANEL_FIFO" &
 
 case "$flavor" in
     bar)
