@@ -11,33 +11,37 @@ override_utf8_locale yes
 use_spacer left
 
 TEXT
-${exec sleep 0.1}
-C\f1$if_mpd_playing ♪ $mpd_artist - $mpd_title $endif \
-\f2 /${fs_free /}  \
-\f3 ~${fs_free /home}  \
-\f6 ${time %A %d %B} ${time %H:%M}  
+${exec sleep 0.1}\
+#C${exec ~/Code/scripts/output_stlarch_font.rb}
+C\f6$if_mpd_playing ♪ $mpd_artist - $mpd_title  $endif\
+\f9 ${exec transmission-remote -l | grep -v Stopped | wc -l | awk '{ print $1 - 2 }'}  \
+\f4 ${exec cat ~/Code/scripts/facebook_status}  \
+\f5 ${exec cat ~/Code/scripts/gmail_status}  \
+\f2 ${fs_used /}  \
+\f3 ${fs_used /home}  \
+\f7 [${membar}]  \
+\f5 [${cpubar}]  \
+\fr ${time %A %d %B - %H:%M}  \
 
 #,[
-#  {"full_text": "/", "color":"\#AB6B74"},
-#  {"full_text": "${fs_free /}", "color":"\#687987"},
-#  {"full_text": "${diskio /dev/sda1}    ", "color":"\#424548"},
+ {"full_text": "/", "color":"\#AB6B74"},
+#  {"full_text": "${fs_free /}", "color":"\#687987"}, #  {"full_text": "${diskio /dev/sda1}    ", "color":"\#424548"},
 #  {"full_text": "H", "color":"\#AB6B74"},
-#  {"full_text": "${fs_free /home}", "color":"\#687987"},
+#  {"full_text": "${fs_free /home}", "color":"\#6879 7"},
 #  {"full_text": "${diskio /dev/sda2}    ", "color":"\#424548"},
-#  {"full_text": "D", "color":"\#AB6B74"},
+#  {"full_text": "D", "color":"\#AB6B74" ,
 #  {"full_text": "${fs_free /mnt/Zuurstok}", "color":"\#687987"},
-#  {"full_text": "${diskio /dev/sdb1}    ", "color":"\#424548"},
+#  {"full_text": "${diskio /dev/sdb1}  ", "color":"\#424548"},
 ##  {"full_text": "|", "color":"\#000000"},
-#  {"full_text": "    ⇋ ${addr enp3s0}", "color":"\#5F9F74"},
+#  {"full_text": "    ⇋ ${addr enp3s }", "color":"\#5F9F74"},
 #  {"full_text": "${downspeed enp3s0}", "color":"\#536057"},
-#  {"full_text": "${if_existing /tmp/reversetunnel.9797} consus $endif", "color":"\#00ff00"},
+#  {"full_text": "${if_existing /tm /reversetunnel.9797} consus $endif", "color":"\#00ff00"},
 #  {"full_text": "${blink ${tcp_portmon 22 22 rip 0}}", "color":"\#FF0000"},
-#  {"full_text": "    ❤${hwmon temp 1}°C ${loadavg 1} [$cpubar] ","color": "\#B94557"},
+#  {"full_text": "    ❤${hwmon tem  1}°C ${loadavg 1} [$cpubar] ","color": "\#B94557"},
 #  {"full_text": "≣ $memeasyfree ", "color":"\#B28D4C"},
 #  {"full_text": "$if_mpd_playing ♪  $mpd_artist - $mpd_title $endif", "color":"\#1B4D97"},
 #  #{"full_text": "♪ $mixer%", "color":"\#AB6B74"},
-#  {"full_text": " ${time %A %d %B} ${time %H:%M} ", "color":"\#FFFFFF"}
-#]
-
+#  {"full_text": " ${time %A %d  B} ${time %H:%M} ", "color":"\#FFFFFF"}
+#] 
 #  {"full_text": " ≈ ${wireless_essid wlan0} [${wireless_link_qual_perc wlan0}%] ","color":"\#33CC99"},
 #  {"full_text": " ☇ [$battery_percent%] ","color":"\#9933CC"},

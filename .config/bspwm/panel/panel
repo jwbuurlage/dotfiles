@@ -1,8 +1,8 @@
 #! /bin/sh
 
 if [ $(pgrep -cx panel) -gt 1 ] ; then
-    printf "%s\n" "The panel is already running." >&2
-    exit 1
+    printf "%s\n" "The panel is already running, killing process." >&2
+    kill $(pgrep -xo panel)
 fi
 
 trap 'trap - TERM; kill 0' INT TERM QUIT EXIT
@@ -12,7 +12,7 @@ flavor=${1:-bar}
 [ -e "$PANEL_FIFO" ] && rm "$PANEL_FIFO"
 mkfifo "$PANEL_FIFO"
 
-bspc config top_padding 14
+bspc config top_padding $PANEL_HEIGHT
 
 bspc control --subscribe > "$PANEL_FIFO" &
 xtitle -sf 'T%s' > "$PANEL_FIFO" &

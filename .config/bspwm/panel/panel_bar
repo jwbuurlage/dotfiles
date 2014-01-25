@@ -30,7 +30,7 @@ item=$1
                         ;;
                     F*)
                         # focused free desktop
-                        wm_infos="$wm_infos \\u4\\br\\f7${name}\\ur"
+                        wm_infos="$wm_infos \\u4\\br\\f8${name}\\ur"
                         ;;
                     U*)
                         # focused urgent desktop
@@ -42,7 +42,7 @@ item=$1
                         ;;
                     f*)
                         # free desktop
-                        wm_infos="$wm_infos \\br\\f7${name}"
+                        wm_infos="$wm_infos \\br\\f8${name}"
                         ;;
                     u*)
                         # urgent desktop
