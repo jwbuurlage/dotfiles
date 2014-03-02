@@ -13,15 +13,15 @@ use_spacer left
 TEXT
 ${exec sleep 0.1}\
 #C${exec ~/Code/scripts/output_stlarch_font.rb}
-C\f6$if_mpd_playing ♪ $mpd_artist - $mpd_title  $endif\
+C\f6$if_mpd_playing  $mpd_artist - $mpd_title  $endif\
 \f9 ${exec transmission-remote -l | grep -v Stopped | wc -l | awk '{ print $1 - 2 }'}  \
 \f4 ${exec cat ~/Code/scripts/facebook_status}  \
 \f5 ${exec cat ~/Code/scripts/gmail_status}  \
 \f2 ${fs_used /}  \
 \f3 ${fs_used /home}  \
-\f7 [${membar}]  \
-\f5 [${cpubar}]  \
-\fr ${time %A %d %B - %H:%M}  \
+\f7 ${memperc}%  \
+\f5 ${cpu}%  \
+\fr  ${time %a %d %b - %H:%M}  \
 
 #,[
  {"full_text": "/", "color":"\#AB6B74"},

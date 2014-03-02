@@ -26,27 +26,27 @@ item=$1
                 case $item in
                     O*)
                         # focused occupied desktop
-                        wm_infos="$wm_infos \\u3\\br\\fr${name}\\ur"
+                        wm_infos="$wm_infos \\u3\\br\\f3\\ur"
                         ;;
                     F*)
                         # focused free desktop
-                        wm_infos="$wm_infos \\u4\\br\\f8${name}\\ur"
+                        wm_infos="$wm_infos \\u4\\br\\f4\\ur"
                         ;;
                     U*)
                         # focused urgent desktop
-                        wm_infos="$wm_infos \\u9\\br\\fr${name}\\ur"
+                        wm_infos="$wm_infos \\u9\\br\\f9\\ur"
                         ;;
                     o*)
                         # occupied desktop
-                        wm_infos="$wm_infos \\br\\fr${name}"
+                        wm_infos="$wm_infos \\br\\f8"
                         ;;
                     f*)
                         # free desktop
-                        wm_infos="$wm_infos \\br\\f8${name}"
+                        wm_infos="$wm_infos \\br\\f8"
                         ;;
                     u*)
                         # urgent desktop
-                        wm_infos="$wm_infos \\b1\\fr${name}"
+                        wm_infos="$wm_infos \\b1\\f1"
                         ;;
                     L*)
                         # layout
@@ -60,3 +60,6 @@ done
     esac
 printf "%s\n" "\\l $wm_infos \\r $title $conky_infos"
 done
+
+
+
