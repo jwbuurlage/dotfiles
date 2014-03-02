@@ -1,3 +1,1 @@
-BSPWM and others config
-
-clone to ~/dotfiles and run install.sh
+dotfiles for bspwm+bar setup. I use patched versions of bar and dmenu with support for xft.

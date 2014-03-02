@@ -12,10 +12,6 @@
 #define BAR_BOTTOM 0
 /* The fonts used for the bar, comma separated. Only the first 2 will be used. */
 #define BAR_FONT "-*-stlarch-medium-r-*-*-10-*-*-*-*-*-*-*", "-*-terminus-medium-r-normal-*-12-*-*-*-c-*-*-1"
-//#define BAR_FONT "-*-nu-*-*-*-*-*-*-*-*-*-*-*-*","fixed"
-//#define BAR_FONT "-*-dejavu sans mono-medium-r-normal--*-80-*-*-*-*-iso10646-1","fixed"
-///#define BAR_FONT "-*-dejavu sans mono-*-*-*-*-*-*-*-*-*-*-*-*"
-//#define BAR_FONT "-*-dejavu sans mono-*-*-*-*-*-*-*-*-*-*-*-*"
 /* Some fonts don't set the right width for some chars, pheex it */
 #define BAR_FONT_FALLBACK_WIDTH 6
 /* Define the opacity of the bar (requires a compositor such as compton) */
@@ -33,4 +29,3 @@
 #define COLOR7  0x8f5536
 #define COLOR8  0x505050
 #define COLOR9  0xd28445
-
