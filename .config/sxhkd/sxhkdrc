@@ -102,7 +102,7 @@ alt + b
     firefox
 
 alt + d
-    dmenu_run -fn 'DejaVu Sans Mono-8' -b -nb '#1d1d1d' -nf '#d5d5d5' -sb '#3d3d3d' -sf '#ca9733'
+    dmenu_run -fn 'Tewi-8' -b -nb '#0d131c' -nf '#b3b2b5' -sb '#251f1f' -sf '#ff0b00'
 
 # make sxhkd reload its configuration files:
 alt + Escape

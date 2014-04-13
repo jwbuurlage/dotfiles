@@ -13,7 +13,7 @@ case $line in
             ;;
         T*)
             # xtitle output
-            title="\\br\\f4${line#?}"
+            #title="\\br\\f4${line#?}"
             ;;
         W*)
             # bspwm internal state
@@ -26,27 +26,27 @@ item=$1
                 case $item in
                     O*)
                         # focused occupied desktop
-                        wm_infos="$wm_infos \\u3\\br\\f3\\ur"
+                        wm_infos="$wm_infos \\br\\f3+"
                         ;;
                     F*)
                         # focused free desktop
-                        wm_infos="$wm_infos \\u4\\br\\f4\\ur"
+                        wm_infos="$wm_infos \\br\\f4."
                         ;;
                     U*)
                         # focused urgent desktop
-                        wm_infos="$wm_infos \\u9\\br\\f9\\ur"
+                        wm_infos="$wm_infos \\br\\f9+"
                         ;;
                     o*)
                         # occupied desktop
-                        wm_infos="$wm_infos \\br\\f8"
+                        wm_infos="$wm_infos \\br\\f8+"
                         ;;
                     f*)
                         # free desktop
-                        wm_infos="$wm_infos \\br\\f8"
+                        wm_infos="$wm_infos \\br\\f8."
                         ;;
                     u*)
                         # urgent desktop
-                        wm_infos="$wm_infos \\b1\\f1"
+                        wm_infos="$wm_infos \\b1\\f1+"
                         ;;
                     L*)
                         # layout
