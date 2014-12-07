@@ -1,0 +1,36 @@
+#! /bin/sh
+
+bspc monitor -d 1 2 3 4 5 6
+
+bspc config border_width        1
+bspc config window_gap          20
+bspc config split_ratio         0.6
+bspc config borderless_monocle  true
+bspc config gapless_monocle     true
+
+bspc config focused_border_color            '#5F819D'
+#bspc config active_border_color
+#bspc config normal_border_color
+#bspc config presel_border_color
+#bspc config focused_locked_border_color
+#bspc config active_locked_border_color
+#bspc config normal_locked_border_color
+#bspc config focused_sticky_border_color
+#bspc config active_sticky_border_color
+#bspc config normal_sticky_border_color
+#bspc config focused_private_border_color
+#bspc config active_private_border_color
+#bspc config normal_private_border_color
+#bspc config urgent_border_color
+
+bspc rule -a Gimp desktop=^6 follow=on floating=on
+bspc rule -a Steam desktop=^2
+bspc rule -a mathematica desktop=^2
+#bspc rule -a urxvt floating=on
+# bspc rule -a mplayer2 floating=on
+# bspc rule -a Kupfer.py focus=on
+# bspc rule -a Screenkey manage=off
+
+#/home/jw/Code/scripts/facebook.rb &
+#/home/jw/Code/scripts/gmail.py &
+~/.config/bspwm/panel/panel &

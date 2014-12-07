@@ -12,10 +12,11 @@ use_spacer left
 
 TEXT
 ${exec sleep 0.1}\
-#C${exec ~/Code/scripts/output_stlarch_font.rb}
-C\f6$if_mpd_playing  $mpd_artist - $mpd_title  $endif\
-\f9  ${battery_percent}% \
-\fr ${time %H:%M}  \
+C+ %{F\#FFB5BD68}${battery_percent}%%%{F-} \
+%{F\#FF333333}|%{F-} %{F\#FF5F819D}${time %d-%m-%Y}%{F-} \
+%{F\#FF333333}|%{F-} %{F\#FF81A2BE}${time %H:%M}%{F-} \
+
+#\f6$if_mpd_playing  $mpd_artist - $mpd_title  $endif\
 #\f3 \u3NT\uf: ${wireless_essid eth0} \
 #\f5 \u5GMAIL\uf: ${exec cat ~/Code/scripts/gmail_status}  \
 #\f2 \u2DISK\uf: ${fs_free /}  \

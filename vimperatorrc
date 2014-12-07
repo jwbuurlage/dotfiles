@@ -1,0 +1,5 @@
+noremap j 5j
+noremap k 5k
+
+set gui=none
+set gui=tabs

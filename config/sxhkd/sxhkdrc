@@ -20,13 +20,16 @@ super + {s,f}
 super + {grave,Tab}
     bspc {window,desktop} -f last
 
+super + r
+    bspc desktop -F vertical
+
 super + apostrophe
     bspc window -s last
 
 super + {o,i}
     bspc control --record-history off; \
     bspc window {older,newer} -f; \
-    bspc control --record-history on
+    bspckcontrol --record-history on
 
 super + y
     bspc window -w last.manual
@@ -102,7 +105,21 @@ alt + b
     firefox
 
 alt + d
-    dmenu_run -fn 'Tewi-8' -b -nb '#0d131c' -nf '#b3b2b5' -sb '#251f1f' -sf '#ff0b00'
+    dmenu_run -fn 'Monospace-8' -nb '#0d131c' -nf '#b3b2b5' -sb '#251f1f' -sf '#41d8ff' -l 5
+
+
+## Media keys
+XF86AudioRaiseVolume
+    pactl set-sink-volume 0 +5%
+
+XF86AudioLowerVolume
+    pactl set-sink-volume 0 -- -5%
+
+XF86MonBrightnessUp
+    xbacklight +10
+
+XF86MonBrightnessDown
+    xbacklight -5
 
 # make sxhkd reload its configuration files:
 alt + Escape
