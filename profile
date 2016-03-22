@@ -1,0 +1,7 @@
+export PATH="$PATH:/home/jw/bin/"
+export XDG_CONFIG_HOME="$HOME/.config"
+
+PANEL_FIFO=/tmp/panel-fifo
+PANEL_HEIGHT=24
+PANEL_FONT_FAMILY="Roboto Mono-10"
+export PANEL_FIFO PANEL_HEIGHT PANEL_FONT_FAMILY
