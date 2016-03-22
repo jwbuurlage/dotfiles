@@ -1,0 +1,44 @@
+conky.config = {
+    alignment = 'top_left',
+    background = true,
+    border_width = 1,
+    cpu_avg_samples = 2,
+	default_color = 'white',
+    default_outline_color = 'white',
+    default_shade_color = 'white',
+    draw_borders = false,
+    draw_graph_borders = true,
+    draw_outline = false,
+    draw_shades = false,
+    use_xft = true,
+    font = 'DejaVu Sans Mono:size=12',
+    gap_x = 5,
+    gap_y = 60,
+    minimum_height = 5,
+	minimum_width = 5,
+    net_avg_samples = 2,
+    no_buffers = true,
+    out_to_console = true,
+    out_to_stderr = false,
+    out_to_x = false,
+    extra_newline = false,
+    own_window = false,
+    own_window_class = 'Conky',
+    own_window_type = 'desktop',
+    stippled_borders = 0,
+    update_interval = 1.0,
+    uppercase = false,
+    use_spacer = 'left',
+    show_graph_scale = false,
+    show_graph_range = false,
+    mpd_host = "192.168.1.144",
+    mpd_port = 6600
+}
+
+conky.text = [[
+C %{F\#A54242}${battery_short} %{F-} \
+%{F\#FF333333}|%{F-} %{F\#FF687987}${addr wlp2s0b1}%{F-} \
+$if_mpd_playing%{F\#FF333333}|%{F-} %{F\#FFB1A281}$mpd_artist - $mpd_title%{F-} $endif\
+%{F\#FF333333}|%{F-} %{F\#FF5F819D}${time %d-%m-%Y}%{F-} \
+%{F\#FF333333}|%{F-} %{F\#FF81A2BE}${time %H:%M}%{F-} \
+]]
