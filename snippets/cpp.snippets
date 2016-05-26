@@ -1,0 +1,57 @@
+# HPP FILE
+
+snippet hpp "generate .hpp file"
+#pragma once
+
+
+namespace ${1} {
+
+class ${2:`!v substitute(substitute(vim_snippets#Filename('$1','ClassName'),'^.','\u&',''), '_\(\w\)', '\u\1', 'g')`} {
+  public:
+	$2();
+	~$2();
+
+  private:
+	${3}
+};
+
+} // namespace $1
+endsnippet
+
+snippet test "test"
+test ${1}
+endsnippet
+
+# CPP FILE
+
+snippet cpp "generate .cpp file"
+#include "${1:`!v substitute(substitute(expand('%'), 'src/', '', 'g'), 'cpp', 'hpp', 'g')`}"
+
+
+namespace ${2} {
+
+${3:`!v substitute(substitute(vim_snippets#Filename('$1','ClassName'),'^.','\u&',''), '_\(\w\)', '\u\1', 'g')`}::$3(${4}) {
+	${5}
+}
+
+$3::~$3() {
+	${6}
+}
+
+} // namespace $2
+endsnippet
+
+
+snippet inc "include system"
+#include <${1}>
+endsnippet
+
+snippet incl "include project"
+#include "${1}"
+endsnippet
+
+snippet mfun "member function"
+${1:void} ${2:`!v substitute(substitute(vim_snippets#Filename('$1','ClassName'),'^.','\u&',''), '_\(\w\)', '\u\1', 'g')`}::${3}(${4}) {
+${4}
+}
+endsnippet
