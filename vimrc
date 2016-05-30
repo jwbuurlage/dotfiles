@@ -7,19 +7,21 @@
 call plug#begin('~/.vim/plugged')
 
 Plug 'scrooloose/nerdtree'
-Plug 'vim-scripts/a.vim'
+Plug 'kana/vim-altr'
 Plug 'w0ng/vim-hybrid'
 Plug 'majutsushi/tagbar'
 Plug 'bling/vim-airline'
 Plug 'edkolev/tmuxline.vim'
 Plug 'airblade/vim-gitgutter'
 Plug 'Shougo/vimproc.vim', { 'do': 'make' }
-Plug 'Valloric/YouCompleteMe', { 'do': './install.py' }
+Plug 'Rip-Rip/clang_complete', { 'do': 'make install' }
 Plug 'godlygeek/tabular'
 Plug 'plasticboy/vim-markdown'
 Plug 'kien/ctrlp.vim'
 Plug 'SirVer/ultisnips'
 Plug 'honza/vim-snippets'
+Plug 'ntpeters/vim-better-whitespace'
+Plug 'rking/ag.vim'
 
 " finalize vundle
 call plug#end()
@@ -51,6 +53,7 @@ set autoindent       " automatically indent blocks
 set showcmd          " show information on current cmd
 set incsearch        " show results while searching
 set scrolloff=1      " always show at least one line above/below cursor
+set sidescroll=1     " reveal 1 char at a time when scrolling horizontally
 
 " IDE SHORTCUTS
 " =============
@@ -100,11 +103,11 @@ let g:NERDTreeIndicatorMapCustom = {
     \ "Unknown"   : "?"
     \ }
 
-" A.vim
+" altr
 " -----
 
-" set show alternative shortkey
-" map <C-Tab> :A<CR>
+command! A call altr#forward()
+call altr#define('include/%.hpp', 'src/%.cpp')
 
 " Hybrid color scheme
 " -------------------
@@ -125,42 +128,25 @@ map <C-m> :TagbarToggle<CR>
 set laststatus=2
 let g:airline_powerline_fonts = 1
 
-" YouCompleteMe
-" -------------
-
-let g:ycm_confirm_extra_conf = 0
-
 " VimMarkdown
 " -----------
 
 let g:vim_markdown_folding_disabled = 1
 
+" ClangComplete
+" -------------
+
+let g:clang_snippets = 1
+let g:clang_snippets_engine = 'ultisnips'
+let g:clang_auto_select = 1
+let g:clang_close_preview = 1
+let g:clang_library_path = '/usr/lib/'
+let g:clang_user_options = '|| exit 0'
+
 " Snippets
 " --------
 
-let g:UltiSnipsEditSplit="vertical"
-
-function! g:UltiSnips_Complete()
-    call UltiSnips#ExpandSnippet()
-    if g:ulti_expand_res == 0
-        if pumvisible()
-            return "\<C-n>"
-        else
-            call UltiSnips#JumpForwards()
-            if g:ulti_jump_forwards_res == 0
-               return "\<TAB>"
-            endif
-        endif
-    endif
-    return ""
-endfunction
-
-au BufEnter * exec "inoremap <silent> " . g:UltiSnipsExpandTrigger . " <C-R>=g:UltiSnips_Complete()<cr>"
-let g:UltiSnipsJumpForwardTrigger="<tab>"
-let g:UltiSnipsListSnippets="<c-e>"
-" this mapping Enter key to <C-y> to chose the current highlight item 
-" and close the selection list, same as other IDEs.
-" CONFLICT with some plugins like tpope/Endwise
-inoremap <expr> <CR> pumvisible() ? "\<C-y>" : "\<C-g>u\<CR>"
-
-let g:UltiSnipsSnippetDirectories=[$HOME.'/.snippets']
+let g:UltiSnipsEditSplit = "vertical"
+let g:UltiSnipsSnippetDirectories = [$HOME.'/.snippets']
+let g:UltiSnipsJumpForwardTrigger = "<tab>"
+let g:UltiSnipsJumpBackwardTrigger = "<s-tab>"
