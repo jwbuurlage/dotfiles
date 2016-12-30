@@ -1,166 +1,122 @@
-" Personal .vimrc file of Jan-Willem Buurlage <janwillembuurlage@gmail.com>
+" https://github.com/sdiehl/haskell-vim-proto
+" Each of the sections can be copied into your existing config independent of
+" the other ones.
 
-" PLUGINS
-" =======
+" == basic ==
 
-" initialize plugin manager
-call plug#begin('~/.vim/plugged')
-
-Plug 'scrooloose/nerdtree'
-Plug 'vim-scripts/a.vim'
-Plug 'w0ng/vim-hybrid'
-Plug 'majutsushi/tagbar'
-Plug 'bling/vim-airline'
-Plug 'edkolev/tmuxline.vim'
-Plug 'airblade/vim-gitgutter'
-Plug 'Shougo/vimproc.vim', { 'do': 'make' }
-Plug 'Valloric/YouCompleteMe', { 'do': './install.py' }
-Plug 'godlygeek/tabular'
-Plug 'plasticboy/vim-markdown'
-Plug 'kien/ctrlp.vim'
-Plug 'SirVer/ultisnips'
-Plug 'honza/vim-snippets'
-
-" finalize vundle
-call plug#end()
-
-" allow plugins to handle filetype indentation
+syntax on
 filetype plugin indent on
 
-" COLOR SCHEME
-" ============
+call plug#begin()
 
-syntax on            " use syntax higlighting
-set t_Co=256         " use 256 colors
+Plug 'w0ng/vim-hybrid'
+Plug 'Shougo/vimproc.vim', {'do' : 'make'}
+Plug 'eagletmt/ghcmod-vim'
+Plug 'eagletmt/neco-ghc'
+Plug 'ctrlpvim/ctrlp.vim'
+Plug 'scrooloose/syntastic'
+Plug 'tomtom/tlib_vim'
+Plug 'MarcWeber/vim-addon-mw-utils'
+Plug 'garbas/vim-snipmate'
+Plug 'scrooloose/nerdtree'
+Plug 'scrooloose/nerdcommenter'
+Plug 'godlygeek/tabular'
+Plug 'ervandew/supertab'
+Plug 'Shougo/neocomplete.vim'
+Plug 'vim-airline/vim-airline'
+
+call plug#end()
+
+set nocompatible
+set number
+set nowrap
+set showmode
+set smartcase
+set smarttab
+set smartindent
+set autoindent
+set softtabstop=2
+set shiftwidth=2
+set expandtab
+set incsearch
+set mouse=a
+set history=1000
+set clipboard=unnamedplus,autoselect
+
+set completeopt=menuone,menu,longest
+
+set wildignore+=*\\tmp\\*,*.swp,*.swo,*.zip,.git,.cabal-sandbox
+set wildmode=longest,list,full
+set wildmenu
+set completeopt+=longest
+
+" 256 colors
+set t_Co=256
 set background=dark  " use dark background
-
-" EDITOR
-" ======
-
-set tabstop=4        " 4 spaces
-set shiftwidth=4     " 4 spaces
-set softtabstop=4    " 4 spaces
-set expandtab        " use spaces
-set number           " show line numbers
-set relativenumber   " show relative line numbers
-set nowrap           " dont wrap lines
-
-set cursorline       " highlight current line
-set showmatch        " highlight matching [{()}]
-set autoindent       " automatically indent blocks
-set showcmd          " show information on current cmd
-set incsearch        " show results while searching
-set scrolloff=1      " always show at least one line above/below cursor
-
-" IDE SHORTCUTS
-" =============
-
-" clang format
-map <C-K> :pyf /usr/share/clang/clang-format.py<cr>
-imap <C-K> <c-o>:pyf /usr/share/clang/clang-format.py<cr>
-
-" compile and run
-map <F7> :!g++ -std=c++14 % -o %:r && ./%:r<cr>
-
-" LANGUAGE SPECIFIC
-" =================
-
-" wrap/fold certain files
-autocmd BufNewFile,BufReadPost *.yaml setl foldmethod=indent
-autocmd BufRead,BufNewFile   *.tex setl wrap
-
-" do not indent C++ namespaces
-set cino=N-s
-
-" PLUGIN SETTINGS
-" ===============
-
-" NERD Tree
-" ---------
-
-" show NT on startup if no file is specified
-autocmd vimenter * if !argc() | NERDTree | endif
-
-" set toggle shortkey
-map <C-n> :NERDTreeToggle<CR>
-
-" automatically close if NT is only window left open
-autocmd bufenter * if (winnr("$") == 1 && exists("b:NERDTree") && b:NERDTree.isTabTree()) | q | endif
-
-" custom character map for NT git status
-let g:NERDTreeIndicatorMapCustom = {
-    \ "Modified"  : "✹",
-    \ "Staged"    : "✚",
-    \ "Untracked" : "✭",
-    \ "Renamed"   : "➜",
-    \ "Unmerged"  : "═",
-    \ "Deleted"   : "✖",
-    \ "Dirty"     : "✗",
-    \ "Clean"     : "✔︎",
-    \ "Unknown"   : "?"
-    \ }
-
-" A.vim
-" -----
-
-" set show alternative shortkey
-" map <C-Tab> :A<CR>
-
 " Hybrid color scheme
-" -------------------
-
 let g:hybrid_custom_term_colors = 1
 colorscheme hybrid
 
-" Tagbar
-" ------
+set cmdheight=1
 
-" set show tagbar shortkey
-map <C-m> :TagbarToggle<CR>
+" == syntastic ==
 
-" Airline
-" -------
+map <Leader>s :SyntasticToggleMode<CR>
 
-" draw airline at start
+set statusline+=%#warningmsg#
+set statusline+=%{SyntasticStatuslineFlag()}
+set statusline+=%*
+
+let g:syntastic_always_populate_loc_list = 1
+let g:syntastic_auto_loc_list = 0
+let g:syntastic_check_on_open = 0
+let g:syntastic_check_on_wq = 0
+
+" == ghc-mod ==
+
+map <silent> tw :GhcModTypeInsert<CR>
+map <silent> ts :GhcModSplitFunCase<CR>
+map <silent> tq :GhcModType<CR>
+map <silent> te :GhcModTypeClear<CR>
+
+" == supertab ==
+
+let g:SuperTabDefaultCompletionType = '<c-x><c-o>'
+
+if has("gui_running")
+  imap <c-space> <c-r>=SuperTabAlternateCompletion("\<lt>c-x>\<lt>c-o>")<cr>
+else " no gui
+  if has("unix")
+    inoremap <Nul> <c-r>=SuperTabAlternateCompletion("\<lt>c-x>\<lt>c-o>")<cr>
+  endif
+endif
+
+" == neco-ghc ==
+
+let g:haskellmode_completion_ghc = 1
+autocmd FileType haskell setlocal omnifunc=necoghc#omnifunc
+
+" == nerd-tree ==
+
+map <C-n> :NERDTreeToggle<CR>
+
+" == tabular ==
+
+let g:haskell_tabular = 1
+
+vmap a= :Tabularize /=<CR>
+vmap a; :Tabularize /::<CR>
+vmap a- :Tabularize /-><CR>
+vmap a, :Tabularize /<-<CR>
+vmap al :Tabularize /[\[\\|,]<CR>
+
+" == ctrl-p ==
+
+map <silent> <Leader>t :CtrlP()<CR>
+noremap <leader>b<space> :CtrlPBuffer<cr>
+let g:ctrlp_custom_ignore = '\v[\/]dist$'
+
+" == airline ==
+
+let g:airline_powerline_fonts = 0
 set laststatus=2
-let g:airline_powerline_fonts = 1
-
-" YouCompleteMe
-" -------------
-
-let g:ycm_confirm_extra_conf = 0
-
-" VimMarkdown
-" -----------
-
-let g:vim_markdown_folding_disabled = 1
-
-" Snippets
-" --------
-
-let g:UltiSnipsEditSplit="vertical"
-
-function! g:UltiSnips_Complete()
-    call UltiSnips#ExpandSnippet()
-    if g:ulti_expand_res == 0
-        if pumvisible()
-            return "\<C-n>"
-        else
-            call UltiSnips#JumpForwards()
-            if g:ulti_jump_forwards_res == 0
-               return "\<TAB>"
-            endif
-        endif
-    endif
-    return ""
-endfunction
-
-au BufEnter * exec "inoremap <silent> " . g:UltiSnipsExpandTrigger . " <C-R>=g:UltiSnips_Complete()<cr>"
-let g:UltiSnipsJumpForwardTrigger="<tab>"
-let g:UltiSnipsListSnippets="<c-e>"
-" this mapping Enter key to <C-y> to chose the current highlight item 
-" and close the selection list, same as other IDEs.
-" CONFLICT with some plugins like tpope/Endwise
-inoremap <expr> <CR> pumvisible() ? "\<C-y>" : "\<C-g>u\<CR>"
-
-let g:UltiSnipsSnippetDirectories=[$HOME.'/.snippets']

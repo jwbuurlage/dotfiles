@@ -31,14 +31,13 @@ conky.config = {
     use_spacer = 'left',
     show_graph_scale = false,
     show_graph_range = false,
-    mpd_host = "192.168.1.144",
+    mpd_host = "127.0.0.1",
     mpd_port = 6600
 }
 
 conky.text = [[
-C %{F\#A54242}${battery_short} %{F-} \
-%{F\#FF333333}|%{F-} %{F\#FF687987}${addr wlp2s0b1}%{F-} \
-$if_mpd_playing%{F\#FF333333}|%{F-} %{F\#FFB1A281}$mpd_artist - $mpd_title%{F-} $endif\
-%{F\#FF333333}|%{F-} %{F\#FF5F819D}${time %d-%m-%Y}%{F-} \
-%{F\#FF333333}|%{F-} %{F\#FF81A2BE}${time %H:%M}%{F-} \
+C %{F\#FF687987}${addr enp3s0} \
+$if_mpd_playing%{F\#FF333333} | %{F\#FFB1A281} $mpd_artist - $mpd_title $endif \
+%{F\#FF333333}| %{F\#FF5F819D}${time %d-%m-%Y} \
+%{F\#FF333333}| %{F\#FF81A2BE}${time %H:%M} \
 ]]
