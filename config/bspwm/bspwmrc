@@ -12,8 +12,8 @@ bspc config presel_feedback_color "#222222"
 
 bspc rule -a plasmashell state=floating center=on
 
-bspc config top_padding 25
+bspc config top_padding 35
 
 bspc monitor -d 1 2 3 4 5 6
 
-~/.config/bspwm/panel/panel
+conky&

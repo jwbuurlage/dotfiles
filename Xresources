@@ -14,8 +14,8 @@ urxvt.perl-ext-common: default,matcher
 urxvt.matcher.button: 1
 urxvt.colorUL: #4682B4
 
-urxvt*font        : xft:Iosevka:size=13
-urxvt*boldFont        : xft:Iosevka:bold:size=13
+urxvt*font        : xft:Fira Code:size=16
+urxvt*boldFont        : xft:Fira Code:bold:size=16
 
 ! Base16 Default Dark
 ! Scheme: Chris Kempson (http://chriskempson.com)

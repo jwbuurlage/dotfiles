@@ -86,20 +86,20 @@ super + @button{1-3}
 # wm independent hotkeys
 #
 
-# XF86AudioRaiseVolume
-#     pulseaudio-ctl up 10 ; twmnc -t volume -c `pulseaudio-ctl full-status | python -c "print(int(input().split(' ')[0]))"` --id 1 -d 2000
-# 
-# XF86AudioLowerVolume
-#     pulseaudio-ctl down 10 ; twmnc -t volume -c `pulseaudio-ctl full-status | python -c "print(int(input().split(' ')[0]))"` --id 1 -d 2000
-# 
-# XF86AudioMute
-#     pulseaudio-ctl mute ; twmnc -t volume -c `pulseaudio-ctl full-status | python -c "print('muted') if input().split(' ')[1] == 'yes' else print('unmuted')"` --id 1 -d 2000
-# 
-# XF86MonBrightnessDown
-#     xbacklight -dec +10% && twmnc -t brightness -c `xbacklight -get | python -c "print(int(float(input())))"` --id 1 -d 2000
-# 
-# XF86MonBrightnessUp
-#     xbacklight -inc +20% && twmnc -t brightness -c `xbacklight -get | python -c "print(int(float(input())))"` --id 1 -d 2000
+XF86AudioRaiseVolume
+    pulseaudio-ctl up 5 ; twmnc -t volume -c `pulseaudio-ctl full-status | python -c "print(int(input().split(' ')[0]))"` --id 1 -d 2000
+
+XF86AudioLowerVolume
+    pulseaudio-ctl down 5 ; twmnc -t volume -c `pulseaudio-ctl full-status | python -c "print(int(input().split(' ')[0]))"` --id 1 -d 2000
+
+XF86AudioMute
+    pulseaudio-ctl mute ; twmnc -t volume -c `pulseaudio-ctl full-status | python -c "print('muted') if input().split(' ')[1] == 'yes' else print('unmuted')"` --id 1 -d 2000
+
+XF86MonBrightnessDown
+    xbacklight -dec +10% && twmnc -t brightness -c `xbacklight -get | python -c "print(int(float(input())))"` --id 1 -d 2000
+
+XF86MonBrightnessUp
+    xbacklight -inc +20% && twmnc -t brightness -c `xbacklight -get | python -c "print(int(float(input())))"` --id 1 -d 2000
 
 ctrl + alt + q
     systemctl suspend
@@ -120,10 +120,10 @@ alt + shift + r
     urxvt -e ranger
 
 alt + d
-    dmenu_run -b -i -fn "Iosevka-13" -nb "#000000" -nf "#bbbbbb" -sb "#000000" -sf "#81A2BE"
+    dmenu_run -b -i -fn "Fira Code-16" -nb "#000000" -nf "#bbbbbb" -sb "#000000" -sf "#81A2BE"
 
 alt + shift + d
-    find ~/ | sed 's/ /\\ /g' | sort -f | dmenu -i -w 1920 -h 1080 -q -o 0.9 -p "file" -fn "DejaVu Sans 12" -nb "#000000" -nf "#bbbbbb" -sb "#000000" -sf "#81A2BE" | xargs exo-open
+    find ~/ | sed 's/ /\\ /g' | sort -f | dmenu -i -w 1920 -h 1080 -q -o 0.9 -p "file" -fn "Fire Code 16" -nb "#000000" -nf "#bbbbbb" -sb "#000000" -sf "#81A2BE" | xargs rifle
 
 # make sxhkd reload its configuration files:
 alt + Escape
