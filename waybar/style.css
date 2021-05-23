@@ -1,0 +1,62 @@
+* {
+    border: none;
+    border-radius: 0;
+    font-family: "Hasklig";
+    font-size: 16px;
+    min-height: 30px;
+}
+
+window#waybar {
+    background: rgba(43, 48, 59, 0.5);
+    border-bottom: 3px solid rgba(100, 114, 125, 0.5);
+    color: white;
+}
+
+#workspaces button {
+    padding: 0 5px;
+    background: transparent;
+    color: white;
+    border-bottom: 3px solid transparent;
+}
+
+#workspaces button.focused {
+    background: #64727D;
+    border-bottom: 3px solid white;
+}
+
+#mode, #clock, #battery, #pulseaudio, #network, #custom-weather, #custom-spotify {
+    padding: 0 10px;
+    margin: 0 5px;
+}
+
+#mode {
+    background: #64727D;
+    border-bottom: 3px solid white;
+}
+
+#pulseaudio {
+    color: #c678dd;
+}
+
+#network {
+    color: #98be65;
+}
+
+#clock {
+    background-color: #64727D;
+}
+
+#custom-spotify {
+    color: #ecbe7b;
+}
+
+#custom-weather {
+    color: #51afef;
+}
+
+@keyframes blink {
+    to {
+        background-color: #ffffff;
+        color: black;
+    }
+}

@@ -1,0 +1,23 @@
+{
+    "layer": "top",
+    "modules-left": ["sway/workspaces", "sway/mode"],
+    "modules-center": ["sway/window"],
+    "modules-right": ["custom/spotify", "custom/weather", "network", "pulseaudio", "clock", "tray"],
+    "sway/window": {
+        "max-length": 50
+    },
+    "custom/spotify": {
+        "exec": "spt pb",
+        "interval": 5
+    },
+    "custom/weather": {
+        "exec": "curl 'https://wttr.in/Zurich?format=(%l)+%C+%t+%w'",
+        "interval": 3600
+    },
+    "network": {
+        "format": "{ipaddr}"
+    },
+    "clock": {
+        "format-alt": "{:%a, %d. %b  %H:%M}"
+    }
+}
